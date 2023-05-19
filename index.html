@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moeda</title>
+</head>
+
+<body>
+    <label for="valor-dolar">US$</label>
+    <input type="text" id="valor-dolar" oninput="converterDolarParaReal()" onfocus="this.select()" value="1,00">
+
+    <label for="valor-real">R$</label>
+    <input type="text" id="valor-real" oninput="converterRealParaDolar()" onfocus="this.select()" value="4,96">
+
+    <div id="resultado"></div>
+
+    <script>
+        function fetchTaxaDeCambio() {
+            return fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=brl')
+                .then(response => response.json())
+                .then(data => {
+                    return data.usd.brl;
+                })
+                .catch(error => {
+                    console.error('Erro ao obter a taxa de câmbio:', error);
+                });
+        }
+
+        async function converterDolarParaReal() {
+            const valorDolarInput = document.getElementById('valor-dolar');
+            const valorRealInput = document.getElementById('valor-real');
+
+            let valorDolar = parseFloat(valorDolarInput.value.replace(',', '.'));
+            if (isNaN(valorDolar)) {
+                valorDolar = 0;
+            }
+
+            const taxaDeCambio = await fetchTaxaDeCambio();
+            const valorReal = valorDolar * taxaDeCambio;
+            valorRealInput.value = valorReal.toFixed(2).replace('.', ',');
+        }
+
+        async function converterRealParaDolar() {
+            const valorDolarInput = document.getElementById('valor-dolar');
+            const valorRealInput = document.getElementById('valor-real');
+
+            let valorReal = parseFloat(valorRealInput.value.replace(',', '.'));
+            if (isNaN(valorReal)) {
+                valorReal = 0;
+            }
+
+            const taxaDeCambio = await fetchTaxaDeCambio();
+            const valorDolar = valorReal / taxaDeCambio;
+            valorDolarInput.value = valorDolar.toFixed(2).replace('.', ',');
+        }
+    </script>
+</body>
+
+</html>

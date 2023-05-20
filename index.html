@@ -1,61 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Moeda</title>
+    <title>Dolar em Real - Well Melo</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
-    <label for="valor-dolar">US$</label>
-    <input type="text" id="valor-dolar" oninput="converterDolarParaReal()" onfocus="this.select()" value="1,00">
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <main class="main">
+        <div class="content">
+            <div class="group">
+                <label class="moeda" for="valor-dolar">US$</label>
 
-    <label for="valor-real">R$</label>
-    <input type="text" id="valor-real" oninput="converterRealParaDolar()" onfocus="this.select()" value="4,96">
+                <input type="text" class="expand-input" id="valor-dolar" oninput="converterDolarParaReal();"
+                    onfocus="this.select();" value="1,00">
+            </div>
 
-    <div id="resultado"></div>
+            <span class="text-info-vale">Vale</span>
 
-    <script>
-        function fetchTaxaDeCambio() {
-            return fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=brl')
-                .then(response => response.json())
-                .then(data => {
-                    return data.usd.brl;
-                })
-                .catch(error => {
-                    console.error('Erro ao obter a taxa de câmbio:', error);
-                });
-        }
+            <div class="group">
+                <label class="moeda" for="valor-real">R$</label>
 
-        async function converterDolarParaReal() {
-            const valorDolarInput = document.getElementById('valor-dolar');
-            const valorRealInput = document.getElementById('valor-real');
+                <input type="text" class="expand-input" id="valor-real" oninput="converterRealParaDolar();"
+                    onfocus="this.select();" value="">
+            </div>
 
-            let valorDolar = parseFloat(valorDolarInput.value.replace(',', '.'));
-            if (isNaN(valorDolar)) {
-                valorDolar = 0;
-            }
+            <span class="text-info-hoje">Hoje</span>
 
-            const taxaDeCambio = await fetchTaxaDeCambio();
-            const valorReal = valorDolar * taxaDeCambio;
-            valorRealInput.value = valorReal.toFixed(2).replace('.', ',');
-        }
+            <span id="taxa-cambio" style="display: none;"></span>
+        </div>
 
-        async function converterRealParaDolar() {
-            const valorDolarInput = document.getElementById('valor-dolar');
-            const valorRealInput = document.getElementById('valor-real');
+    </main>
 
-            let valorReal = parseFloat(valorRealInput.value.replace(',', '.'));
-            if (isNaN(valorReal)) {
-                valorReal = 0;
-            }
-
-            const taxaDeCambio = await fetchTaxaDeCambio();
-            const valorDolar = valorReal / taxaDeCambio;
-            valorDolarInput.value = valorDolar.toFixed(2).replace('.', ',');
-        }
-    </script>
-</body>
+    <script src="/assets/js/script.js"></script>
 
 </html>

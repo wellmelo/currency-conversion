@@ -13,26 +13,41 @@
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
     <main class="main">
-        <div class="content">
-            <div class="group">
-                <label class="moeda" for="valor-dolar">US$</label>
+        <div id="cards" class="content">
 
-                <input type="text" class="expand-input" id="valor-dolar" oninput="converterDolarParaReal();"
-                    onfocus="this.select();" value="1,00">
-
-                <span class="text-info-vale">Vale</span>
+            <div class="card">
+                <img src="/assets/images/dollar-and-real.png" class="logo">
             </div>
 
-            <div class="group">
-                <label class="moeda" for="valor-real">R$</label>
+            <div class="group-content">
+                <div class="group">
+                    <label class="moeda" for="valor-dolar">US$</label>
 
-                <input type="text" class="expand-input" id="valor-real" oninput="converterRealParaDolar();"
-                    onfocus="this.select();" value="">
+                    <input type="text" class="expand-input" id="valor-dolar" oninput="converterDolarParaReal();"
+                        onfocus="this.select();" value="1,00">
 
-                <span class="text-info-hoje">Hoje</span>
+                    <span class="text-info-vale">Vale</span>
+                </div>
+
+                <div class="group">
+                    <label class="moeda" for="valor-real">R$</label>
+
+                    <input type="text" class="expand-input" id="valor-real" oninput="converterRealParaDolar();"
+                        onfocus="this.select();" value="">
+
+                    <span class="text-info-hoje">Hoje</span>
+                </div>
             </div>
 
             <span id="taxa-cambio" style="display: none;"></span>
+        </div>
+
+        <div class="footer">
+            Powered by: Well Melo
+            <!--
+                <a href="https://produzsite.com" target="_blank"><i class="fa fa-rocket" aria-hidden="true"></i> Produz
+                Site</a>
+                -->
         </div>
 
     </main>

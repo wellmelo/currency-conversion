@@ -127,7 +127,7 @@ const inputs = document.querySelectorAll('.expand-input');
 // Adiciona um evento de clique a cada input
 inputs.forEach(function (input) {
     input.addEventListener('focus', function () {
-        // Adiciona a classe 'expanded' a todos os inputs
+        // Adiciona a classe 'expanded' aos dois inputs
         inputs.forEach(function (input) {
             input.classList.add('expanded');
         });
@@ -141,21 +141,14 @@ inputs.forEach(function (input) {
     });
 });
 
-/*
-function a9(el) {
-    if (el.value.length > 10) {
-        el.style.width = '6.7em';
-    } else if (el.value.length < 3) {
-        el.style.width = el.value.length * 0.65 + 'em';
-    } else {
-        el.style.width = el.value.length * 0.65 - 0.3 + 'em';
-    }
-}
-function a9s() {
-    a9(elEst);
-    a9(elNac);
-}
-*/
+var card = document.getElementsByClassName('card');
+
+document.addEventListener('mousemove', function (e) {
+    var ax = -(window.innerWidth / 2 - e.pageX) / 20;
+    var ay = (window.innerHeight / 2 - e.pageY) / 10;
+    document.getElementById('cards').style.transform =
+        'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg)';
+});
 
 /* <![C@data[ */
 elEst = a3('valor-dolar');

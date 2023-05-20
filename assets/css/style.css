@@ -16,7 +16,7 @@ body {
 }
 .bg {
     animation: slide 3s ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #b3ffec 50%, #8dfeba 50%);
+    background-image: linear-gradient(-60deg, #caffcf 50%, #e7ffec 50%);
     bottom: 0;
     left: -50%;
     opacity: 0.5;
@@ -39,12 +39,31 @@ body {
     align-items: center;
     height: 100vh;
     width: 100%;
+    flex-direction: column;
 }
 .content {
     max-width: 1200px;
     margin: auto;
+    margin-bottom: -100px;
     display: flex;
+    flex-direction: column; /* Alteração: altera a direção do flex para coluna */
     align-items: flex-end;
+
+    padding: 40px 60px;
+
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 5px 0 rgba(68, 1, 8, 0.1);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.logo {
+    margin: auto;
+    margin-bottom: 20px;
+}
+img.logo {
+    width: 250px;
 }
 .text-info-vale {
     position: absolute;
@@ -60,6 +79,7 @@ body {
     height: 40px;
     padding: 0 5px;
     padding-top: 9px;
+    z-index: 999;
 }
 .text-info-hoje {
     position: absolute;
@@ -92,8 +112,10 @@ textarea:focus,
 input:focus {
     outline: none;
 }
-.group:first-of-type {
-    margin-right: 30px;
+
+.group-content {
+    display: flex;
+    margin-top: 20px;
 }
 .group {
     display: flex;
@@ -102,14 +124,67 @@ input:focus {
     border-radius: 10px;
     position: relative;
 }
+.group:first-of-type {
+    margin-right: 30px;
+}
 
 .moeda {
+    display: flex;
     align-items: center;
     height: 40%;
     font-size: 40px;
     padding: 10px;
     border-radius: 10px 0 0 10px;
     color: #888;
+}
+
+.card {
+    pointer-events: none;
+    transform: translateZ(0);
+    margin: auto;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    display: flex;
+    position: relative;
+}
+
+.card:after {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    border-radius: 50%;
+    left: 0;
+    bottom: 40px;
+    box-shadow: 0 30px 20px rgba(0, 0, 0, 0.6);
+}
+.footer {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    font-size: 0.8em;
+    color: #888;
+}
+
+.footer i {
+    padding-right: 3px;
+}
+
+.footer a {
+    text-decoration: none;
+    background-color: #0ab144;
+    padding: 3px 10px;
+    border-radius: 25px;
+    text-align: center !important;
+    margin-left: 0px;
+    margin-right: 5px;
+    color: #1f1919;
+}
+
+.footer a:hover {
+    animation: pulse2 1s infinite;
+    animation-timing-function: linear;
+    background-color: #0cd853;
 }
 
 @media (max-width: 800px) {
@@ -151,7 +226,49 @@ input:focus {
     }
 }
 
+@media (max-width: 650px) {
+    .content {
+        padding: 30px;
+        width: 80%;
+    }
+    .group-content {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 100%;
+    }
+    .group:first-of-type {
+        margin-right: 0px;
+    }
+    .group {
+    }
+    img.logo {
+        width: 180px;
+    }
+    .moeda {
+        display: flex;
+        align-items: left;
+        min-width: 70px;
+        font-size: 25px;
+    }
+    .expand-input {
+        font-size: 25px !important;
+    }
+    input.expand-input {
+        height: 80px;
+        text-align: center;
+        width: 100% !important;
+    }
+}
+
 @media (max-width: 450px) {
+    .content {
+        width: 90%;
+        background-color: transparent !important;
+        box-shadow: 0 0px 0px 0 rgba(68, 1, 8, 0.1);
+        border: 0 !important;
+        transform: none !important;
+    }
     .group:first-of-type {
         margin-right: 0px;
     }
@@ -171,6 +288,13 @@ input:focus {
 }
 
 @media (max-width: 350px) {
+    .content {
+        width: 100%;
+        background-color: transparent !important;
+        box-shadow: 0 0px 0px 0 rgba(68, 1, 8, 0.1);
+        border: 0 !important;
+        transform: none !important;
+    }
     .group:first-of-type {
         margin-right: 0px;
     }
@@ -180,12 +304,15 @@ input:focus {
         min-width: 70px;
         font-size: 25px;
     }
+    .group {
+        height: 60px;
+    }
     .expand-input {
-        font-size: 25px !important;
+        font-size: 20px !important;
     }
     input.expand-input {
-        height: 80px;
-        width: 6em;
+        height: 60px;
+        width: 90%;
         text-align: left;
     }
 }

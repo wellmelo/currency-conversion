@@ -47,16 +47,34 @@ body {
     align-items: flex-end;
 }
 .text-info-vale {
-    font-size: 18px;
-    padding: 0 20px 0 10px;
-    margin-bottom: 3px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: -15px;
+    margin-right: -20px;
+    font-size: 16px;
     color: #444;
+    background-color: #fff;
+    box-shadow: 2px 1px #ccc;
+    border-radius: 50%;
+    height: 40px;
+    padding: 0 5px;
+    padding-top: 9px;
 }
 .text-info-hoje {
-    font-size: 18px;
-    padding-left: 10px;
-    margin-bottom: 3px;
-    color: #444;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: -15px;
+    margin-right: -20px;
+    font-size: 16px;
+    color: #888;
+    background-color: #fff;
+    box-shadow: 2px 1px #ccc;
+    border-radius: 50%;
+    height: 40px;
+    padding: 0 3px;
+    padding-top: 9px;
 }
 input.expand-input {
     display: flex;
@@ -69,31 +87,20 @@ input.expand-input {
     transition-duration: 400ms;
     min-width: 150px;
     color: #444;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
 }
-/*
-label[for='valor-dolar'],
-label[for='valor-real'] {
-    position: absolute;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+textarea:focus,
+input:focus {
+    outline: none;
 }
-*/
-
+.group:first-of-type {
+    margin-right: 30px;
+}
 .group {
     display: flex;
     align-items: center;
     background-color: rgb(236, 229, 216);
     border-radius: 10px;
+    position: relative;
 }
 
 .moeda {
@@ -108,26 +115,22 @@ label[for='valor-real'] {
 @media (max-width: 800px) {
     .text-info-vale {
         font-size: 15px;
-        margin-top: -70px;
-        margin-right: -31px;
-        transform: rotate(50deg);
-        float: right;
+        transform: rotate(30deg);
     }
     .text-info-hoje {
         font-size: 15px;
-        margin-top: -80px;
-        margin-right: -15px;
-        transform: rotate(50deg);
-        float: right;
-        position: relative;
+        transform: rotate(30deg);
     }
     .content {
         display: flex;
         flex-direction: column;
     }
+    .group:first-of-type {
+        margin-right: 0px;
+    }
     .group {
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         height: 80px;
         width: 100%;
         position: relative;
@@ -149,6 +152,9 @@ label[for='valor-real'] {
 }
 
 @media (max-width: 450px) {
+    .group:first-of-type {
+        margin-right: 0px;
+    }
     .moeda {
         display: flex;
         align-items: center;
@@ -165,6 +171,9 @@ label[for='valor-real'] {
 }
 
 @media (max-width: 350px) {
+    .group:first-of-type {
+        margin-right: 0px;
+    }
     .moeda {
         display: flex;
         align-items: center;

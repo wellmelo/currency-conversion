@@ -61,20 +61,33 @@ body {
 input.expand-input {
     display: flex;
     background-color: #f9f8f8;
-    padding: 10px 20px;
+    padding: 10px 5px;
     font-size: 50px;
     text-align: right;
-    width: 3em;
+    margin-left: 0.1em;
     border-radius: 0 10px 10px 0;
     transition-duration: 400ms;
+    min-width: 150px;
     color: #444;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-input.expand-input:focus {
+/*
+label[for='valor-dolar'],
+label[for='valor-real'] {
+    position: absolute;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
-
-.expand-input.expanded {
-    width: 5em;
-}
+*/
 
 .group {
     display: flex;
@@ -133,9 +146,6 @@ input.expand-input:focus {
         width: 9em;
         text-align: center;
     }
-    .expand-input.expanded {
-        width: 10em;
-    }
 }
 
 @media (max-width: 450px) {
@@ -150,11 +160,7 @@ input.expand-input:focus {
     }
     input.expand-input {
         height: 80px;
-        width: 9em;
         text-align: center;
-    }
-    .expand-input.expanded {
-        width: 10em;
     }
 }
 
@@ -172,9 +178,6 @@ input.expand-input:focus {
         height: 80px;
         width: 6em;
         text-align: left;
-    }
-    .expand-input.expanded {
-        width: 6.4em;
     }
 }
 
